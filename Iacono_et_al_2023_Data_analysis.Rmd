@@ -1,5 +1,5 @@
 ---
-title: "Paper1_Notes"
+title: "Variability of cell wall recalcitrance and composition in genotypes of Miscanthus from different genetic groups and geographical origin "
 output:
   html_document:
     df_print: paged
@@ -43,44 +43,44 @@ library(sjPlot)
 
 ```{r}
 
-my.theme<- theme(plot.title=element_text(face = "bold", 
-                                           colour = NULL, 
-                                           size = 12, 
-                                           vjust = 3, 
-                                           hjust=0.5, 
+my.theme<- theme(plot.title=element_text(face = "bold",
+                                           colour = NULL,
+                                           size = 12,
+                                           vjust = 3,
+                                           hjust=0.5,
                                            margin = margin(t = 20, r = 0, b = 30, l = 0)),
-                  axis.title.x=element_text(colour = NULL, 
-                                             size = 12, 
-                                             vjust=1, 
+                  axis.title.x=element_text(colour = NULL,
+                                             size = 12,
+                                             vjust=1,
                                              margin = margin(t = 0, r = 10, b = 0, l = 10)),
-                  axis.title.y=element_text(face = NULL, 
-                                            colour = NULL, 
-                                            size = 12, 
-                                            vjust = 1, 
+                  axis.title.y=element_text(face = NULL,
+                                            colour = NULL,
+                                            size = 12,
+                                            vjust = 1,
                                             margin = margin(t = 20, r = 20, b = 20, l = 20)),
                   #axis.text.x=element_blank(),
-                  axis.text.x = element_text(colour = NULL, 
-                                             size = 12, 
-                                             vjust=1, 
+                  axis.text.x = element_text(colour = NULL,
+                                             size = 12,
+                                             vjust=1,
                                              margin = margin(t = 0, r = 10, b = 0, l = 10),
-                                            angle = 45, 
+                                            angle = 45,
                                              hjust = 1),
                   #axis.ticks.x=element_blank(),
-                  axis.text.y = element_text(colour = NULL, 
-                                             size = 12, 
-                                             vjust=1, 
+                  axis.text.y = element_text(colour = NULL,
+                                             size = 12,
+                                             vjust=1,
                                              margin = margin(t = 0, r = 10, b = 0, l = 10)),
-                  strip.text.x =element_text(face = "bold", 
-                                             colour = NULL, 
-                                             size = 12, 
-                                             vjust=1, 
+                  strip.text.x =element_text(face = "bold",
+                                             colour = NULL,
+                                             size = 12,
+                                             vjust=1,
                                              margin = margin(t = 0, r = 10, b = 0, l = 10)),
-                  legend.title=element_text(face = "bold", 
-                                            colour = NULL, 
+                  legend.title=element_text(face = "bold",
+                                            colour = NULL,
                                             size = 12),
-                  legend.position = "right", 
-                  legend.text= element_text(face = NULL, 
-                                            colour = NULL, 
+                  legend.position = "right",
+                  legend.text= element_text(face = NULL,
+                                            colour = NULL,
                                             size = 12, vjust=1)
                   )
 
@@ -109,7 +109,7 @@ palette <-c("#000000",
 
 ```{r}
 
-miscanthus <- read_csv("./data/miscanthus distribution.csv")#import the data from the file downloaded from https://www.gbif.org/
+miscanthus <- read_csv("./data/miscanthus distribution.csv") #import the data from the file downloaded from https://www.gbif.org/
 head(miscanthus)
 
 
@@ -193,28 +193,28 @@ legend <- ggpubr::get_legend(
   sin + theme(legend.box.margin = margin(0, 0, 0, 12))
 )
 
-cowplot::plot_grid(sin+rremove("legend"), 
-          sac+rremove("legend"), 
-          flor+rremove("legend"), 
-          lut+rremove("legend"), 
-          gig+rremove("legend"), 
-          legend, 
-          rel_heights = c(1,1,1,1,1, .3), 
-          ncol = 3, 
+cowplot::plot_grid(sin+rremove("legend"),
+          sac+rremove("legend"),
+          flor+rremove("legend"),
+          lut+rremove("legend"),
+          gig+rremove("legend"),
+          legend,
+          rel_heights = c(1,1,1,1,1, .3),
+          ncol = 3,
           labels = NULL)
 
 
 
 tiff("./plots/Fig_2.tif", width=30,height=15, units= "cm", res = 600)
 print(
-  cowplot::plot_grid(sin+rremove("legend"), 
-                     sac+rremove("legend"), 
-                     flor+rremove("legend"), 
-                     lut+rremove("legend"), 
-                     gig+rremove("legend"), 
-                     legend, 
-                     rel_heights = c(1,1,1,1,1, .3), 
-                     ncol = 3, 
+  cowplot::plot_grid(sin+rremove("legend"),
+                     sac+rremove("legend"),
+                     flor+rremove("legend"),
+                     lut+rremove("legend"),
+                     gig+rremove("legend"),
+                     legend,
+                     rel_heights = c(1,1,1,1,1, .3),
+                     ncol = 3,
                      labels = NULL)
   )
 dev.off()
@@ -229,10 +229,10 @@ dev.off()
 cw_data_50genos<- #complete set of data collected on the 49 selected genotypes
   read.csv("data/50-screening-data3.csv")
 
-cw_data_50genos$pop_dapc8<- #the genetic groups as defined by pop_dapc_8 is set as a factor and levels are ordered 
+cw_data_50genos$pop_dapc8<- #the genetic groups as defined by pop_dapc_8 is set as a factor and levels are ordered
   factor(cw_data_50genos$pop_dapc8, levels = c("Sin_S_Japan", "Sin (EMI/PRI)", "Sin_N_Japan", "Sin_Taiwan", "Flor_Taiwan", "Sacc_rob", "Hyb", "Lut"))
 
-cw_data_50genos$pop_dapc8_ID<- #the genetic groups as defined by pop_dapc_8 is set as a factor and levels are ordered 
+cw_data_50genos$pop_dapc8_ID<- #the genetic groups as defined by pop_dapc_8 is set as a factor and levels are ordered
   factor(cw_data_50genos$pop_dapc8_ID, levels = c("M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8"))
 
 cw_data_50genos<-cw_data_50genos%>%
@@ -250,10 +250,10 @@ cw_data_50genos_avg<-cw_data_50genos %>% # average for the creation of correlati
 
 cw_data_50genos_avg<-as.data.frame(cw_data_50genos_avg)
 
-cw_data_50genos_avg$pop_dapc8<- #the genetic groups as defined by pop_dapc_8 is set as a factor and levels are ordered 
+cw_data_50genos_avg$pop_dapc8<- #the genetic groups as defined by pop_dapc_8 is set as a factor and levels are ordered
   factor(cw_data_50genos_avg$pop_dapc8, levels = c("Sin_S_Japan", "Sin (EMI/PRI)", "Sin_N_Japan", "Sin_Taiwan", "Flor_Taiwan", "Sacc_rob", "Hyb", "Lut"))
 
-cw_data_50genos_avg$pop_dapc8_ID<- #the genetic groups as defined by pop_dapc_8 is set as a factor and levels are ordered 
+cw_data_50genos_avg$pop_dapc8_ID<- #the genetic groups as defined by pop_dapc_8 is set as a factor and levels are ordered
   factor(cw_data_50genos_avg$pop_dapc8_ID, levels = c("M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8"))
 
 cw_data_50genos_avg2<-cw_data_50genos %>% #for the table with mean and se
@@ -290,10 +290,10 @@ write.csv(cell_wall_descr, "./data/cell_wall_descr.csv", row.names = TRUE)
 
 ```{r}
 corr<-corr.test(Complete_dataset_geo[c(9:59)],
-                         y = NULL, 
+                         y = NULL,
                          use = "complete",
                          method="pearson",
-                         adjust="bonferroni", 
+                         adjust="bonferroni",
                          alpha=.05,
                          ci=TRUE,
                          minlength=5)
@@ -303,15 +303,15 @@ corr<-corr.test(Complete_dataset_geo[c(9:59)],
 ```{r}
 
 corrplot(corr$r,
-         type="lower", 
-         order="original", 
-         p.mat = corr$p, 
-         sig.level = 0.01, 
-         insig = "blank", 
-         col=col4(10), 
+         type="lower",
+         order="original",
+         p.mat = corr$p,
+         sig.level = 0.01,
+         insig = "blank",
+         col=col4(10),
          tl.pos = "ld",
-         tl.cex = .8, 
-         tl.srt=45, 
+         tl.cex = .8,
+         tl.srt=45,
          tl.col = "black",
          cl.cex = .8)+
   my.theme
@@ -331,7 +331,7 @@ dev.off()
 ```{r}
 #Total content of monosaccharides
 #Using adjust = "mvt" is the closest to being the “exact” all-around method “single-step” method, as it uses the multivariate t distribution (and the mvtnorm package) with the same covariance structure as the estimates to determine the adjustment.
-# We used Satterthwaite method, which is implemented in the lmerTest package. 
+# We used Satterthwaite method, which is implemented in the lmerTest package.
 
 #Glc
 library(lmerTest)
@@ -343,8 +343,8 @@ posthoc.Glc<-emmeans(model.Glc, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.Glc<-cld(posthoc.Glc, 
-             level = 0.05, 
+outREML.Glc<-cld(posthoc.Glc,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.Glc.df<-as.data.frame(outREML.Glc)
@@ -359,8 +359,8 @@ posthoc.Xyl<-emmeans(model.Xyl, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.Xyl<-cld(posthoc.Xyl, 
-             level = 0.05, 
+outREML.Xyl<-cld(posthoc.Xyl,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.Xyl.df<-as.data.frame(outREML.Xyl)
@@ -375,8 +375,8 @@ posthoc.Ara<-emmeans(model.Ara, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.Ara<-cld(posthoc.Ara, 
-             level = 0.05, 
+outREML.Ara<-cld(posthoc.Ara,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.Ara.df<-as.data.frame(outREML.Ara)
@@ -384,7 +384,7 @@ outREML.Ara.df<-as.data.frame(outREML.Ara)
 
 Glc<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "Glc",
           combine = TRUE,
@@ -397,16 +397,16 @@ Glc<-cw_data_50genos%>%
           ylab = "Glc",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.Glc.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.Glc.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 Xyl<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-ggboxplot(., 
+ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "Xyl",
           combine = TRUE,
@@ -419,16 +419,16 @@ ggboxplot(.,
           ylab = "Xyl",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.Xyl.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.Xyl.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 Ara<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-ggboxplot(., 
+ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "Ara",
           combine = TRUE,
@@ -441,10 +441,10 @@ ggboxplot(.,
           ylab = "Ara",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.Ara.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 3, 
+  geom_text(data = outREML.Ara.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 3,
             size = 5)+
   my.theme
 
@@ -454,7 +454,7 @@ plot_grid(Glc+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                     axis.text.x= element_blank()),
           Xyl+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                      axis.title.x = element_blank(),
-                    axis.text.x= element_blank()), 
+                    axis.text.x= element_blank()),
           Ara+theme(plot.margin = unit(c(0, 0, 0, 0), "cm")),
           ncol=1,
           align = "hv",
@@ -484,8 +484,8 @@ posthoc.NDF<-emmeans(model.NDF, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.NDF<-cld(posthoc.NDF, 
-             level = 0.05, 
+outREML.NDF<-cld(posthoc.NDF,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.NDF.df<-as.data.frame(outREML.NDF)
@@ -500,8 +500,8 @@ posthoc.ADF<-emmeans(model.ADF, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.ADF<-cld(posthoc.ADF, 
-             level = 0.05, 
+outREML.ADF<-cld(posthoc.ADF,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.ADF.df<-as.data.frame(outREML.ADF)
@@ -516,8 +516,8 @@ posthoc.ADL<-emmeans(model.ADL, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.ADL<-cld(posthoc.ADL, 
-             level = 0.05, 
+outREML.ADL<-cld(posthoc.ADL,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.ADL.df<-as.data.frame(outREML.ADL)
@@ -532,8 +532,8 @@ posthoc.K_Lignin<-emmeans(model.K_Lignin, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.K_Lignin<-cld(posthoc.K_Lignin, 
-             level = 0.05, 
+outREML.K_Lignin<-cld(posthoc.K_Lignin,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.K_Lignin.df<-as.data.frame(outREML.K_Lignin)
@@ -548,8 +548,8 @@ posthoc.Cellulose<-emmeans(model.Cellulose, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.Cellulose<-cld(posthoc.Cellulose, 
-             level = 0.05, 
+outREML.Cellulose<-cld(posthoc.Cellulose,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.Cellulose.df<-as.data.frame(outREML.Cellulose)
@@ -564,8 +564,8 @@ posthoc.Hemicellulose<-emmeans(model.Hemicellulose, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.Hemicellulose<-cld(posthoc.Hemicellulose, 
-             level = 0.05, 
+outREML.Hemicellulose<-cld(posthoc.Hemicellulose,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.Hemicellulose.df<-as.data.frame(outREML.Hemicellulose)
@@ -580,8 +580,8 @@ posthoc.Ash<-emmeans(model.Ash, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.Ash<-cld(posthoc.Ash, 
-             level = 0.05, 
+outREML.Ash<-cld(posthoc.Ash,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.Ash.df<-as.data.frame(outREML.Ash)
@@ -596,8 +596,8 @@ posthoc.DM<-emmeans(model.DM, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.DM<-cld(posthoc.DM, 
-             level = 0.05, 
+outREML.DM<-cld(posthoc.DM,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.DM.df<-as.data.frame(outREML.DM)
@@ -607,7 +607,7 @@ outREML.DM.df<-as.data.frame(outREML.DM)
 
 NDF<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "NDF",
           combine = TRUE,
@@ -620,16 +620,16 @@ NDF<-cw_data_50genos%>%
           ylab = "NDF",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.NDF.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.NDF.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 ADF<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "ADF",
           combine = TRUE,
@@ -642,16 +642,16 @@ ADF<-cw_data_50genos%>%
           ylab = "ADF",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.ADF.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.ADF.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 ADL<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "ADL",
           combine = TRUE,
@@ -664,16 +664,16 @@ ADL<-cw_data_50genos%>%
           ylab = "ADL",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.ADL.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.ADL.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 K_Lignin<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "K_Lignin",
           combine = TRUE,
@@ -686,16 +686,16 @@ K_Lignin<-cw_data_50genos%>%
           ylab = "Klason Lignin",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.K_Lignin.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.K_Lignin.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 Cellulose<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "Cellulose",
           combine = TRUE,
@@ -708,16 +708,16 @@ Cellulose<-cw_data_50genos%>%
           ylab = "Cellulose",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.Cellulose.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.Cellulose.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 Hemicellulose<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "Hemicellulose",
           combine = TRUE,
@@ -730,16 +730,16 @@ Hemicellulose<-cw_data_50genos%>%
           ylab = "Hemicellulose",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.Hemicellulose.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.Hemicellulose.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 Ash<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "Ash",
           combine = TRUE,
@@ -752,16 +752,16 @@ Ash<-cw_data_50genos%>%
           ylab = "Ash",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.Ash.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 3, 
+  geom_text(data = outREML.Ash.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 3,
             size = 5)+
   my.theme
 
 DM<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "DM",
           combine = TRUE,
@@ -774,10 +774,10 @@ DM<-cw_data_50genos%>%
           ylab = "DM",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.DM.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 15, 
+  geom_text(data = outREML.DM.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
@@ -787,7 +787,7 @@ plot_grid(NDF+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                     axis.text.x= element_blank()),
           ADF+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                      axis.title.x = element_blank(),
-                    axis.text.x= element_blank()), 
+                    axis.text.x= element_blank()),
           ADL+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                      axis.title.x = element_blank(),
                     axis.text.x= element_blank()),
@@ -826,8 +826,8 @@ posthoc.AraXyl<-emmeans(model.AraXyl, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.AraXyl<-cld(posthoc.AraXyl, 
-             level = 0.05, 
+outREML.AraXyl<-cld(posthoc.AraXyl,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.AraXyl.df<-as.data.frame(outREML.AraXyl)
@@ -842,8 +842,8 @@ posthoc.XylGlc<-emmeans(model.XylGlc, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.XylGlc<-cld(posthoc.XylGlc, 
-             level = 0.05, 
+outREML.XylGlc<-cld(posthoc.XylGlc,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.XylGlc.df<-as.data.frame(outREML.XylGlc)
@@ -858,18 +858,18 @@ posthoc.CelHem<-emmeans(model.CelHem, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.CelHem<-cld(posthoc.CelHem, 
-             level = 0.05, 
+outREML.CelHem<-cld(posthoc.CelHem,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.CelHem.df<-as.data.frame(outREML.CelHem)
-    
+
 
 #plots
 
 AraXyl<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "AraXyl",
           combine = TRUE,
@@ -882,16 +882,16 @@ AraXyl<-cw_data_50genos%>%
           ylab = "Ara/Xyl ratio",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.AraXyl.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = .2, 
+  geom_text(data = outREML.AraXyl.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = .2,
             size = 5)+
   my.theme
 
 XylGlc<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "XylGlc",
           combine = TRUE,
@@ -904,16 +904,16 @@ XylGlc<-cw_data_50genos%>%
           ylab = "Xyl/Glc ratio",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.XylGlc.df, 
-            aes(pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = .5, 
+  geom_text(data = outREML.XylGlc.df,
+            aes(pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = .5,
             size = 5)+
   my.theme
 
 CelHem<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "CelHem",
           combine = TRUE,
@@ -926,10 +926,10 @@ CelHem<-cw_data_50genos%>%
           ylab = "Cel./Hem. ratio",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.CelHem.df, 
-            aes(pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = .5, 
+  geom_text(data = outREML.CelHem.df,
+            aes(pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = .5,
             size = 5)+
   my.theme
 
@@ -938,7 +938,7 @@ plot_grid(AraXyl+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                     axis.text.x= element_blank()),
           XylGlc+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                      axis.title.x = element_blank(),
-                    axis.text.x= element_blank()), 
+                    axis.text.x= element_blank()),
           CelHem+theme(plot.margin = unit(c(0, 0, 0, 0), "cm")),
           ncol=1,
           align = "hv",
@@ -957,7 +957,7 @@ ggsave("./plots/Fig_S5_REML.tiff", width = 8.5, height = 8.5)
 ```{r}
 #Monosaccharides enzymatically released
 #Using adjust = "mvt" is the closest to being the “exact” all-around method “single-step” method, as it uses the multivariate t distribution (and the mvtnorm package) with the same covariance structure as the estimates to determine the adjustment.
-# We used Satterthwaite method, which is implemented in the lmerTest package. 
+# We used Satterthwaite method, which is implemented in the lmerTest package.
 
 #GlcE
 library(lmerTest)
@@ -969,8 +969,8 @@ posthoc.GlcE<-emmeans(model.GlcE, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.GlcE<-cld(posthoc.GlcE, 
-             level = 0.05, 
+outREML.GlcE<-cld(posthoc.GlcE,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.GlcE.df<-as.data.frame(outREML.GlcE)
@@ -982,8 +982,8 @@ posthoc.XylE<-emmeans(model.XylE, "pop_dapc8_ID",
                       adjust = "mvt",
                       lmer.df = "satterthwaite"
                       )
-outREML.XylE<-cld(posthoc.XylE, 
-             level = 0.05, 
+outREML.XylE<-cld(posthoc.XylE,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.XylE.df<-as.data.frame(outREML.XylE)
@@ -996,8 +996,8 @@ posthoc.AraE<-emmeans(model.AraE, "pop_dapc8_ID",
                       adjust = "mvt",
                       lmer.df = "satterthwaite"
                       )
-outREML.AraE<-cld(posthoc.AraE, 
-             level = 0.05, 
+outREML.AraE<-cld(posthoc.AraE,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.AraE.df<-as.data.frame(outREML.AraE)
@@ -1005,7 +1005,7 @@ outREML.AraE.df<-as.data.frame(outREML.AraE)
 #Plots
 GlcE<-cw_data_50genos%>%
   filter(pop_dapc8!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "GlcE",
           combine = TRUE,
@@ -1020,15 +1020,15 @@ GlcE<-cw_data_50genos%>%
           theme = "minimal")+
   geom_text(data = outREML.GlcE.df,
             inherit.aes = TRUE,
-            aes(x=pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 10, 
+            aes(x=pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 10,
             size = 5)+
   my.theme
 
 XylE<-cw_data_50genos%>%
   filter(pop_dapc8!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "XylE",
           combine = TRUE,
@@ -1041,16 +1041,16 @@ XylE<-cw_data_50genos%>%
           ylab = "XylE",
           legend= "none",
           theme = "minimal")+
-  geom_text(data = outREML.XylE.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
-            angle = 0, 
-            nudge_y = 3, 
+  geom_text(data = outREML.XylE.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
+            angle = 0,
+            nudge_y = 3,
             size = 5)+
   my.theme
 
 AraE<-cw_data_50genos%>%
   filter(pop_dapc8!="NA")%>%
-ggboxplot(., 
+ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "AraE",
           combine = TRUE,
@@ -1063,10 +1063,10 @@ ggboxplot(.,
           ylab = "AraE",
           theme = "minimal",
           legend="none")+
-  geom_text(data = outREML.AraE.df, 
+  geom_text(data = outREML.AraE.df,
             aes(x = pop_dapc8_ID, y = emmean, label = .group),  
-            angle = 0, 
-            nudge_y = 10, 
+            angle = 0,
+            nudge_y = 10,
             size = 5)+
   my.theme
 
@@ -1077,7 +1077,7 @@ ggboxplot(.,
                     axis.text.x= element_blank()),
           XylE+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                      axis.title.x = element_blank(),
-                    axis.text.x= element_blank()), 
+                    axis.text.x= element_blank()),
           AraE+theme(plot.margin = unit(c(0, 0, 0, 0), "cm")),
           ncol=1,
           align = "hv",
@@ -1097,11 +1097,11 @@ library(scales)    # more helper functions
 # optional: sort factor levels of groups column according to highest mean
 
 # ...in means table
-model_means_cld <- outREML %>% 
+model_means_cld <- outREML %>%
   mutate(group = fct_reorder(pop_dapc8_ID, emmean))
 
 # ...in data table
-PlantGrowth <- cw_data_50genos %>% 
+PlantGrowth <- cw_data_50genos %>%
   mutate(group = fct_relevel(pop_dapc8_ID, levels(model_means_cld$pop_dapc8_ID)))
 
 # base plot setup
@@ -1160,7 +1160,7 @@ ggplot() +
     position = position_nudge(x = 0.1),
     hjust = 0,
     color = "red"
-  ) 
+  )
   # caption
   #labs(
     #caption = str_wrap("Black dots represent raw data. Red dots and error bars represent (estimated marginal) means ± 95% confidence interval per group. Means not sharing any letter are significantly different at the 5% level of significance.", width = 70))
@@ -1178,7 +1178,7 @@ ggsave("./plots/Figure_4A_REML_detailed.tiff", width = 8.5, height = 8.5)
 #Monosaccharides enzymatically released normalized by the amount of biomass
 
 #Using adjust = "mvt" is the closest to being the “exact” all-around method “single-step” method, as it uses the multivariate t distribution (and the mvtnorm package) with the same covariance structure as the estimates to determine the adjustment.
-# We used Satterthwaite method, which is implemented in the lmerTest package. 
+# We used Satterthwaite method, which is implemented in the lmerTest package.
 
 #LSR
 library(lmerTest)
@@ -1190,8 +1190,8 @@ posthoc.LSR<-emmeans(model.LSR, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.LSR<-cld(posthoc.LSR, 
-             level = 0.05, 
+outREML.LSR<-cld(posthoc.LSR,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.LSR.df<-as.data.frame(outREML.LSR)
@@ -1206,8 +1206,8 @@ posthoc.DW<-emmeans(model.DW, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.DW<-cld(posthoc.DW, 
-             level = 0.05, 
+outREML.DW<-cld(posthoc.DW,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.DW.df<-as.data.frame(outREML.DW)
@@ -1223,8 +1223,8 @@ posthoc.GlcE_DW<-emmeans(model.GlcE_DW, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.GlcE_DW<-cld(posthoc.GlcE_DW, 
-             level = 0.05, 
+outREML.GlcE_DW<-cld(posthoc.GlcE_DW,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.GlcE_DW.df<-as.data.frame(outREML.GlcE_DW)
@@ -1240,8 +1240,8 @@ posthoc.XylE_DW<-emmeans(model.XylE_DW, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.XylE_DW<-cld(posthoc.XylE_DW, 
-             level = 0.05, 
+outREML.XylE_DW<-cld(posthoc.XylE_DW,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.XylE_DW.df<-as.data.frame(outREML.XylE_DW)
@@ -1256,8 +1256,8 @@ posthoc.AraE_DW<-emmeans(model.AraE_DW, "pop_dapc8_ID",
                       lmer.df = "satterthwaite"
                       )
 library(multcomp)
-outREML.AraE_DW<-cld(posthoc.AraE_DW, 
-             level = 0.05, 
+outREML.AraE_DW<-cld(posthoc.AraE_DW,
+             level = 0.05,
              Letters = letters,
              decreasing=FALSE)
 outREML.AraE_DW.df<-as.data.frame(outREML.AraE_DW)
@@ -1266,7 +1266,7 @@ outREML.AraE_DW.df<-as.data.frame(outREML.AraE_DW)
 
 LSR<-cw_data_50genos%>%
   filter(pop_dapc8!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "LSR",
           combine = TRUE,
@@ -1279,17 +1279,17 @@ LSR<-cw_data_50genos%>%
           ylab = "Leaf to Stem ratio",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.LSR.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
+  geom_text(data = outREML.LSR.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
             angle = 0,
-            nudge_y = 2.5, 
+            nudge_y = 2.5,
             size = 5)+
   my.theme
 
 #DW
 DW<-cw_data_50genos%>%
   filter(pop_dapc8!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "DW",
           combine = TRUE,
@@ -1302,10 +1302,10 @@ DW<-cw_data_50genos%>%
           ylab = "Biomass DW (kg)",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.DW.df, 
-            aes(x = pop_dapc8_ID, y = emmean, label = .group), 
+  geom_text(data = outREML.DW.df,
+            aes(x = pop_dapc8_ID, y = emmean, label = .group),
             angle = 0,
-            nudge_y = 2.5, 
+            nudge_y = 2.5,
             size = 5)+
   my.theme
 
@@ -1313,7 +1313,7 @@ ggsave("./plots/Fig_S6_REML.tiff", width = 8.5, height = 8.5)
 
 GlcE_DW<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-  ggboxplot(., 
+  ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "GlcE_DW",
           combine = TRUE,
@@ -1326,16 +1326,16 @@ GlcE_DW<-cw_data_50genos%>%
           ylab = "GlcE DW (g)",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.GlcE_DW.df, 
+  geom_text(data = outREML.GlcE_DW.df,
             aes(x = pop_dapc8_ID, y = emmean, label = .group),  
-            angle = 0, 
-            nudge_y = 100, 
+            angle = 0,
+            nudge_y = 100,
             size = 5)+
   my.theme
 
 XylE_DW<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-ggboxplot(., 
+ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "XylE_DW",
           combine = TRUE,
@@ -1348,16 +1348,16 @@ ggboxplot(.,
           ylab = "XylE DW (g)",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.XylE_DW.df, 
+  geom_text(data = outREML.XylE_DW.df,
             aes(x = pop_dapc8_ID, y = emmean, label = .group),  
-            angle = 0, 
-            nudge_y = 15, 
+            angle = 0,
+            nudge_y = 15,
             size = 5)+
   my.theme
 
 AraE_DW<-cw_data_50genos%>%
   filter(pop_dapc8_ID!="NA")%>%
-ggboxplot(., 
+ggboxplot(.,
           x = "pop_dapc8_ID",
           y = "AraE_DW",
           combine = TRUE,
@@ -1370,10 +1370,10 @@ ggboxplot(.,
           ylab = "AraE DW (g)",
           legend="none",
           theme = "minimal")+
-  geom_text(data = outREML.AraE_DW.df, 
+  geom_text(data = outREML.AraE_DW.df,
             aes(x = pop_dapc8_ID, y = emmean, label = .group),  
-            angle = 0, 
-            nudge_y = 3, 
+            angle = 0,
+            nudge_y = 3,
             size = 5)+
   my.theme
 
@@ -1382,7 +1382,7 @@ plot_grid(GlcE_DW+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                     axis.text.x= element_blank()),
           XylE_DW+theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
                      axis.title.x = element_blank(),
-                    axis.text.x= element_blank()), 
+                    axis.text.x= element_blank()),
           AraE_DW+theme(plot.margin = unit(c(0, 0, 0, 0), "cm")),
           ncol=1,
           align = "hv",
@@ -1399,13 +1399,13 @@ ggsave("./plots/Fig_5_REML.tiff", width = 8.5, height = 8.5)
 ```{r}
 library(sjPlot)
 tab_model(
-  model.Glc.var, 
-  model.Xyl.var, 
+  model.Glc.var,
+  model.Xyl.var,
   model.Ara.var,
-  model.NDF.var, 
-  model.ADF.var, 
+  model.NDF.var,
+  model.ADF.var,
   model.ADL.var,
-  model.Ash.var, 
+  model.Ash.var,
   model.DM.var,
   model.K_Lignin.var,
   model.Cellulose.var,
@@ -1413,45 +1413,45 @@ tab_model(
   model.CelHem.var,
   model.AraXyl.var,
   model.XylGlc.var,
-  model.GlcE.var, 
-  model.XylE.var, 
+  model.GlcE.var,
+  model.XylE.var,
   model.AraE.var,
   model.DW.var,
-  model.GlcE_DW.var, 
-  model.XylE_DW.var, 
+  model.GlcE_DW.var,
+  model.XylE_DW.var,
   model.AraE_DW.var,
   CSS = css_theme("cells"),
   show.re.var=TRUE,
-  
+
   #file = "./tables/tableREML.csv"
   )
 
 tab_model(
-  model.GlcE_DW.var, 
-  model.XylE_DW.var, 
+  model.GlcE_DW.var,
+  model.XylE_DW.var,
   model.AraE_DW.var,
-  CSS = css_theme("cells"), 
+  CSS = css_theme("cells"),
   show.re.var=TRUE,
   show.est = FALSE,
   show.ci = FALSE
   )
 
-tab_model(model.Glc.var, 
-          model.Xyl.var, 
+tab_model(model.Glc.var,
+          model.Xyl.var,
           model.Ara.var,
-          CSS = css_theme("cells"), 
+          CSS = css_theme("cells"),
           show.re.var=TRUE)
 
-tab_model(model.NDF.var, 
-          model.ADF.var, 
-          model.ADL.var, 
-          CSS = css_theme("cells"), 
+tab_model(model.NDF.var,
+          model.ADF.var,
+          model.ADL.var,
+          CSS = css_theme("cells"),
           show.re.var=TRUE)
 
-tab_model(model.Ash.var, 
-          model.DM.var, 
-          model.K_Lignin.var, 
-          CSS = css_theme("cells"), 
+tab_model(model.Ash.var,
+          model.DM.var,
+          model.K_Lignin.var,
+          CSS = css_theme("cells"),
           show.re.var=TRUE)
 ```
 
@@ -1523,7 +1523,7 @@ cols.cor.2b <- cw_data_50genos_avg%>%
             ci=TRUE,
             minlength=5)
 
-# Pairwise correlation between rows 
+# Pairwise correlation between rows
 rows.cor.2 <- cw_data_50genos_avg%>%
   dplyr::select(ID, Glc, Xyl, Ara, Gal, ADF:CelHem, AraXyl, XylGlc, LSR,DW)%>%
   column_to_rownames(var="ID")%>%
@@ -1573,7 +1573,7 @@ Fig_7_2<-cw_data_50genos_avg%>%
   as.matrix()%>%
   apply(MARGIN = 2, FUN = function(X) (X - min(X))/diff(range(X)))%>%
   pheatmap(
-  ., 
+  .,
   color = colorpanel(64, "white", "red"),
   cutree_rows = 5,
   cutree_cols = 2,
@@ -1641,7 +1641,7 @@ corr_Sin_EMI_PRI<-cw_data_50genos_avg%>%
             minlength=5)
 
 corr.b<-corrplot(corr_Sin_EMI_PRI$r[1:3, ],
-                 p.mat = corr_Sin_EMI_PRI$p[1:3, ], 
+                 p.mat = corr_Sin_EMI_PRI$p[1:3, ],
                  type = 'full',
                  insig="blank",
                  col=brewer.pal(n=8, name="RdYlBu"),
@@ -1664,7 +1664,7 @@ corr_Sin_N_Japan<-cw_data_50genos_avg%>%
             minlength=5)
 
 corr.c<-corrplot(corr_Sin_N_Japan$r[1:3, ],
-                 p.mat = corr_Sin_N_Japan$p[1:3, ], 
+                 p.mat = corr_Sin_N_Japan$p[1:3, ],
                  type = 'full',
                  insig="blank",
                  col=brewer.pal(n=8, name="RdYlBu"),
@@ -1688,7 +1688,7 @@ corr_Sin_Taiwan<-cw_data_50genos_avg%>%
             minlength=5)
 
 corr.d<-corrplot(corr_Sin_Taiwan$r[1:3, ],
-                 p.mat = corr_Sin_Taiwan$p[1:3, ], 
+                 p.mat = corr_Sin_Taiwan$p[1:3, ],
                  type = 'full',
                  insig="blank",
                  col=brewer.pal(n=8, name="RdYlBu"),
@@ -1722,7 +1722,7 @@ corr.e<-corrplot(corr_Flor_Taiwan$r[1:3, ],
                  legend= NULL)
 
 #----------------------------------------------------------------
-  
+
 corr_Sacc_rob<-cw_data_50genos_avg%>%
   filter(pop_dapc8=="Sacc_rob")%>%
   select(GlcE,  XylE, AraE, Glc, Xyl, Ara, Gal, ADF:CelHem, AraXyl, XylGlc:DW, AraXyl)%>%
@@ -1736,7 +1736,7 @@ corr_Sacc_rob<-cw_data_50genos_avg%>%
             minlength=5)
 
 corr.f<-corrplot(corr_Sacc_rob$r[1:3, ],
-                 p.mat = corr_Sacc_rob$p[1:3, ], 
+                 p.mat = corr_Sacc_rob$p[1:3, ],
                  type = 'upper',
                  insig="blank",
                  col=brewer.pal(n=8, name="RdYlBu"),
@@ -1760,7 +1760,7 @@ corr_Lut<-cw_data_50genos_avg%>%
             minlength=5)
 
 corr.g<-corrplot(corr_Lut$r[1:3, ],
-                 p.mat = corr_Lut$p[1:3, ], 
+                 p.mat = corr_Lut$p[1:3, ],
                  type = 'upper',
                  insig="blank",
                  col=brewer.pal(n=8, name="RdYlBu"),
@@ -1768,9 +1768,9 @@ corr.g<-corrplot(corr_Lut$r[1:3, ],
                  tl.col = 'black',
                  #pos = '2',
                  legend= NULL)
-  
+
 #-----------------------------------------------------------------
-  
+
 corr_Hyb<-cw_data_50genos_avg%>%
   filter(pop_dapc8=="Hyb")%>%
   select(GlcE,  XylE, AraE, Glc, Xyl, Ara, Gal, ADF:CelHem, AraXyl, XylGlc:DW, AraXyl)%>%
@@ -2064,7 +2064,7 @@ align="hv")
 
 dev.off()
 
-  
+
 
 ```
 
@@ -2073,7 +2073,7 @@ dev.off()
 ```{r}
 #performing a PCa on the dataset
 
-PCA<-prcomp(Complete_dataset_geo[c(9:59)], center= T, scale= T) #performing a PCA analysis 
+PCA<-prcomp(Complete_dataset_geo[c(9:59)], center= T, scale= T) #performing a PCA analysis
 PCAscores <- read.csv("data/PCAscores.csv")
 PCAscores$pop_dapc8<-factor(PCAscores$pop_dapc8, levels = c("Sin_S_Japan", "Sin (EMI/PRI)", "Sin_N_Japan", "Sin_Taiwan", "Flor_Taiwan", "Sacc_rob",     "Hyb", "Lut"))
 PCAscores$pop_dapc8_ID<-factor(PCAscores$pop_dapc8_ID, levels = c("M1", "M2", "M3", "M4", "M5", "M6",     "M7", "M8"))
@@ -2115,11 +2115,11 @@ a = fviz_pca_var(PCA,
   theme_classic()+
   my.theme
 
-#arrange figures 
+#arrange figures
 
 
 
-b = fviz_pca_ind(PCA, 
+b = fviz_pca_ind(PCA,
                   label="none",
                   geom= "point",
                   axes = c(1,2),
