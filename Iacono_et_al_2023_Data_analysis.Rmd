@@ -286,7 +286,7 @@ cell_wall_descr<- cw_data_50genos%>%
 write.csv(cell_wall_descr, "./data/cell_wall_descr.csv", row.names = TRUE)
 ```
 
-## Correlation geo-climatica data
+## Correlation geo-climatic data
 
 ```{r}
 corr<-corr.test(Complete_dataset_geo[c(9:59)],
